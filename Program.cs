@@ -1,17 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 
-    namespace ConsoleApp2
+
+namespace ConsoleApp3
+{
+    public class Cal
     {
-        public class Cal
-        {
-            public Cal()
-            {
-
-            }
-
+        public Cal()
+        { }
             public int calProducto(int numero1, int numero2)
             {
-
                 int result = 0;
 
                 for (int i = 1; i <= numero2; i++)
@@ -19,22 +17,43 @@
                     result = result + numero1;
                 }
                 return result;
-
             }
+        public List<int> Multiplos(int a)
+        {
+
+            List<int> Multiplos = new List<int>();
+
+            Multiplos.Add(0);
+
+            for (int i = 0; i <= a; i++)
+            {
+                if ((i % 3) == 0 & (i % 5) != 0)
+                {
+                    Multiplos.Add(i);
+                }
+            }
+            return Multiplos;
         }
+
+
     }
+}
 
 
-namespace ConsoleApp2
+namespace ConsoleApp3
 {
     public class Program
     {
         public static void Main(string[] args)
         {
+            int a = 300;   // remplaza una entrada de usuario                                                                                                                      
             Cal cal = new Cal();
-            int a = 30;      //Si se desea interactucar con un usuario usamos un "readline" para tomar los numeros, almacenar y recien ahi hacer la suma que lleve al resultado. 
-            int s = 4;
-            Console.WriteLine("Multiplicar " + a + " x " + s + " = " + cal.calProducto(a, s));
+            Console.WriteLine("Estos son los multiplos de 3 pero no de 5 que se encuentran en los primeros " + a + " numeros =");
+            foreach (int numero in cal.Multiplos(a))
+            {
+                Console.WriteLine(numero);
+            }
+
 
         }
     }
