@@ -1,60 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
-namespace ConsoleApp3
+namespace ConsoleApp4
 {
-    public class Cal
-    {
-        public Cal()
-        { }
-            public int calProducto(int numero1, int numero2)
-            {
-                int result = 0;
-
-                for (int i = 1; i <= numero2; i++)
-                {
-                    result = result + numero1;
-                }
-                return result;
-            }
-        public List<int> Multiplos(int a)
+        public class Program
         {
-
-            List<int> Multiplos = new List<int>();
-
-            Multiplos.Add(0);
-
-            for (int i = 0; i <= a; i++)
+            public static void Main(string[] args)
             {
-                if ((i % 3) == 0 & (i % 5) != 0)
+                List<int> apuesta = new List<int>();
+                bool a = true;
+                var seed = Environment.TickCount;
+                var random = new Random(seed);
+
+                while (a)
                 {
-                    Multiplos.Add(i);
+
+                    Console.WriteLine("Ingresar N° al que desea apostar entre el 0 y 36");
+                    int numero = int.Parse(Console.ReadLine());
+
+                    if (0 <= numero & numero <= 36)
+                    {
+                        apuesta.Add(numero);
+
+                    }
+                    else
+                    {
+                        a = false;
+                    }
                 }
+
+
+                int variable = random.Next(0, 36);
+
+                Console.WriteLine("El N° ganador es = " + variable);
+                int ganador = 0;
+                int perdedor = 0;
+                foreach (int apuest in apuesta)
+                {
+                    if (apuest == variable)
+                    {
+                        ganador += 1;
+                    }
+                    else
+                    {
+                        perdedor += 1;
+                    }
+                }
+                Console.WriteLine("N° de ganadores = " + ganador);
+                Console.WriteLine("N° de perdedores = " + perdedor);
             }
-            return Multiplos;
-        }
-
-
-    }
-}
-
-
-namespace ConsoleApp3
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            int a = 300;   // remplaza una entrada de usuario                                                                                                                      
-            Cal cal = new Cal();
-            Console.WriteLine("Estos son los multiplos de 3 pero no de 5 que se encuentran en los primeros " + a + " numeros =");
-            foreach (int numero in cal.Multiplos(a))
-            {
-                Console.WriteLine(numero);
-            }
-
-
         }
     }
-}
