@@ -1,53 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace ConsoleApp4
+namespace ConsoleApp5
 {
-        public class Program
+    class Program
+    {
+        static void Main(string[] args)
         {
-            public static void Main(string[] args)
+            int a, b, c, i, cantidad;
+            string linea;
+            Console.Write("Ingresar cuantos numeros de la serie desea ver = ");
+            linea = Console.ReadLine();
+            cantidad = int.Parse(linea);
+            a = 0;
+            b = 1;
+            for (i = 0; i < cantidad; i++)
             {
-                List<int> apuesta = new List<int>();
-                bool a = true;
-                var seed = Environment.TickCount;
-                var random = new Random(seed);
-
-                while (a)
-                {
-
-                    Console.WriteLine("Ingresar N° al que desea apostar entre el 0 y 36");
-                    int numero = int.Parse(Console.ReadLine());
-
-                    if (0 <= numero & numero <= 36)
-                    {
-                        apuesta.Add(numero);
-
-                    }
-                    else
-                    {
-                        a = false;
-                    }
-                }
-
-
-                int variable = random.Next(0, 36);
-
-                Console.WriteLine("El N° ganador es = " + variable);
-                int ganador = 0;
-                int perdedor = 0;
-                foreach (int apuest in apuesta)
-                {
-                    if (apuest == variable)
-                    {
-                        ganador += 1;
-                    }
-                    else
-                    {
-                        perdedor += 1;
-                    }
-                }
-                Console.WriteLine("N° de ganadores = " + ganador);
-                Console.WriteLine("N° de perdedores = " + perdedor);
+                c = a;
+                a = b;
+                b = c + a;
+                Console.WriteLine(a);
             }
         }
     }
+}
