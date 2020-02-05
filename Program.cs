@@ -1,25 +1,41 @@
 ﻿using System;
 
-
-namespace ConsoleApp1
-{
-    class Program
+    namespace ConsoleApp2
     {
-        static void Main(string[] args)
+        public class Cal
         {
-            Double v = 0.1429;
-            DateTime fecha1 = new DateTime(2020,1,31);
-            DateTime fecha2 = new DateTime(2015,1,31);
-            Console.WriteLine(fecha1.ToLongDateString());
-            Console.WriteLine(fecha2.ToLongDateString());
-            TimeSpan calculo = fecha1 - fecha2;
-            int dias = calculo.Days;
-            Console.WriteLine(" {0} Es el número de dias de una fecha a la otra", dias);
-            //Console.WriteLine("{0} Son las semanas",                                          ver forma simple de convertir dias en semanas.
-            Console.Read();
+            public Cal()
+            {
 
-            
+            }
+
+            public int calProducto(int numero1, int numero2)
+            {
+
+                int result = 0;
+
+                for (int i = 1; i <= numero2; i++)
+                {
+                    result = result + numero1;
+                }
+                return result;
+
+            }
         }
+    }
 
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Cal cal = new Cal();
+            int a = 30;      //Si se desea interactucar con un usuario usamos un "readline" para tomar los numeros, almacenar y recien ahi hacer la suma que lleve al resultado. 
+            int s = 4;
+            Console.WriteLine("Multiplicar " + a + " x " + s + " = " + cal.calProducto(a, s));
+
+        }
     }
 }
